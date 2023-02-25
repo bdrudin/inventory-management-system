@@ -9,9 +9,6 @@
           <div class="card-body">
             <p class="text-center font-weight-light">You have successfully logged in to the dashboard.</p>
           </div>
-          <div class="text-center">
-            <router-link to="/login" class="btn btn-danger" @click="resetToken()">Logout</router-link>
-            </div>
         </div>
       </div>
     </div>
@@ -61,3 +58,4 @@ export default {
   },
 }
 </script>
+ 

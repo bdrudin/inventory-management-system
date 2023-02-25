@@ -30,7 +30,7 @@
             <span class="nav-link-text ms-1">Tabel Supplier</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
+        <li class="nav-item mt-3"> 
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Halaman akun</h6>
         </li>
         <li class="nav-item">
@@ -75,7 +75,7 @@
               </div>
             </div>
           </div>
-          
+
           <div v-if="data === 'barang'">
             <ListBarang />
           </div>
@@ -84,6 +84,9 @@
           </div>
           <div v-else>
             <WelcomeUser />
+            <div class="text-center mt-1">
+              <a class="btn btn-danger" href="/login" type="button" @click="resetToken()">Logout</a>
+            </div>
           </div>
         </div>
       </div>
