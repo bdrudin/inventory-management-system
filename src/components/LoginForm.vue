@@ -41,6 +41,8 @@ export default {
       showSuccessAlert: false,
       showErrorAlert: false,
       errorMessage: '',
+      successMessage: '',
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     }
   },
   methods: {
@@ -51,7 +53,7 @@ export default {
         password: this.password,
       }
       try {
-        const response = await axios.post('http://159.223.57.121:8090/auth/login', credentials);
+        const response = await axios.post(`${this.baseUrl}/auth/login`, credentials);
         if(response.data.message === "LOGIN SUCCESS"){
           this.successMessage = response.data.message;
           this.showSuccessAlert = true;
@@ -59,7 +61,6 @@ export default {
           this.username = '';
           this.password = '';
           this.setToken(response.data.data.token);
-          this.$store.commit('setUser', response.data.data.username);
           localStorage.setItem('user', JSON.stringify(response.data.data.username));
           this.login(response.data.data.username);
           this.$router.push('/dashboard');

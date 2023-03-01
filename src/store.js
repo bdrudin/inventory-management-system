@@ -22,6 +22,7 @@ const store = createStore({
             state.user = null;
             state.token = null;
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
         },
         checkLocalStorage(state) {
             const token = localStorage.getItem('token');
@@ -35,21 +36,6 @@ const store = createStore({
     getters: {
         isAuthenticated: (state) => state.isAuthenticated,
         user: (state) => state.user,
-    },
-    actions: {
-        async getUserData(context) {
-            try {
-                const response = await axios.get('http://159.223.57.121:8090/user', {
-                    headers: {
-                        Authorization: `Bearer ${context.state.token}`,
-                    },
-                });
-                context.commit('login', response.data);
-            } catch (error) {
-                console.error(error);
-                context.commit('logout');
-            }
-        },
     },
 });
 

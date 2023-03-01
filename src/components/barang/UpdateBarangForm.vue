@@ -60,6 +60,7 @@ export default {
         alamat: '',
         noTelp: '',
       },
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     };
   },
   async created() {
@@ -72,7 +73,7 @@ export default {
   methods: {
     async getBarang() {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://159.223.57.121:8090/barang/find-by-id/${this.$route.params.id}`, {
+      const response = await axios.get(`${this.baseUrl}/barang/find-by-id/${this.$route.params.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,7 +84,7 @@ export default {
     async updateBarang() {
       const token = localStorage.getItem('token');
       try {
-        const response = await axios.put(`http://159.223.57.121:8090/barang/update/${this.$route.params.id}`, this.barang, {
+        const response = await axios.put(`${this.baseUrl}/barang/update/${this.$route.params.id}`, this.barang, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'

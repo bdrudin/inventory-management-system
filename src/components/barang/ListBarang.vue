@@ -80,6 +80,7 @@ export default {
       currentOffset: 1,
       limit: 20,
       totalPage: 0,
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     }
   },
   computed: {
@@ -102,7 +103,7 @@ export default {
       try {
         const limit = 20;
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://159.223.57.121:8090/barang/find-all?limit=${this.limit}&offset=${offset}`, {
+        const response = await axios.get(`${this.baseUrl}/barang/find-all?limit=${this.limit}&offset=${offset}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -121,7 +122,7 @@ export default {
     async hapusBarang(barang) {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.delete(`http://159.223.57.121:8090/barang/delete/${barang.id}`, {
+      const response = await axios.delete(`${this.baseUrl}/barang/delete/${barang.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">{{ profile.profileName }}</div>
 
-  <div class="d-flex align-items-center p-1 justify-content-center">
+  <div class="d-flex align-items-center p-1 justify-content-center text-muted">
     <div class="mx-1">{{ isOnline ? 'Online' : 'Offline' }}</div>
     <div :class="{'bg-success': isOnline, 'bg-danger': !isOnline}" class="rounded-circle me-2" style="width: 10px; height: 10px;"></div>
   </div>

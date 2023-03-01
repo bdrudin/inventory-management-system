@@ -67,6 +67,7 @@ export default {
       currentOffset: 1,
       limit: 20,
       totalPage: 0,
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     }
   },
   computed: {
@@ -90,7 +91,7 @@ export default {
         const limit = 20;
         const page = 2; 
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://159.223.57.121:8090/supplier/find-all?limit=${this.limit}&offset=${offset}`, {
+        const response = await axios.get(`${this.baseUrl}/supplier/find-all?limit=${this.limit}&offset=${offset}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -108,7 +109,7 @@ export default {
     async hapusSupplier(supplier) {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.delete(`http://159.223.57.121:8090/supplier/delete/${supplier.id}`, {
+      const response = await axios.delete(`${this.baseUrl}/supplier/delete/${supplier.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

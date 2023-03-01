@@ -10,10 +10,17 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-          <i class="material-icons opacity-10">dashboard</i>
-        <span class="nav-link-text ms-1">Menu</span>
-        </div>
+        <li class="nav-item mt-3"> 
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Menu Aplikasi</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/" type="button">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">home</i>
+            </div>
+            <span class="nav-link-text ms-1">Home</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white "  :class="{ 'active': data === 'barang' }" href="#" @click.prevent="setActiveData('barang')">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -34,7 +41,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Halaman akun</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/login" type="button" @click="resetToken()">
+          <a class="nav-link text-white " href="/login" type="button" @click="logoutSistem()">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -42,11 +49,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/register" type="button" @click="resetToken()">
+          <a class="nav-link text-white " href="/" type="button" @click="logoutSistem()">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
+              <i class="material-icons opacity-10">logout</i>
             </div>
-            <span class="nav-link-text ms-1">Mendaftar</span>
+            <span class="nav-link-text ms-1">Keluar</span>
           </a>
         </li>
       </ul>
@@ -60,7 +67,7 @@
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn btn-primary mt-4 w-100" href="/register" type="button" @click="resetToken()">Buat akun baru</a>
+        <a class="btn btn-primary mt-4 w-100" href="/register" type="button" @click="logoutSistem()">Buat akun baru</a>
       </div>
     </div>
   </aside>
@@ -71,7 +78,10 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-1 z-index-2 justify-content-between align-items-center">
               <div class="bg-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h4 class="text-white ps-3 text-center">Dashboard</h4>
+                <div class="d-flex justify-content-center">
+                  <i class="text-white material-icons opacity-10 fs-3">dashboard</i>
+                  <h4 class="text-white ps-3 text-center">Dashboard</h4>
+                </div>
               </div>
             </div>
           </div>
@@ -84,9 +94,6 @@
           </div>
           <div v-else>
             <WelcomeUser />
-            <div class="text-center mt-1">
-              <a class="btn btn-danger" href="/login" type="button" @click="resetToken()">Logout</a>
-            </div>
           </div>
         </div>
       </div>
@@ -95,7 +102,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import ListBarang from '@/components/barang/ListBarang.vue';
 import ListSupplier from '@/components/supplier/ListSupplier.vue';
 import WelcomeUser from '@/components/WelcomeUser.vue';
@@ -117,11 +124,12 @@ export default {
     ...mapGetters(['isAuthenticated'])
   },
   methods: {
+    ...mapMutations(['logout']),
     setActiveData(data) {
       this.data = data;
     },
-    resetToken() {
-      localStorage.removeItem('token');
+    logoutSistem() {
+      this.logout();
     },
   },
 }

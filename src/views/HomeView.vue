@@ -1,14 +1,18 @@
 <template>
-<nav class="navbar navbar-expand-lg bg-body-tertiary ms-auto">
+<nav class="navbar navbar-expand-md navbar-dark bg-body-tertiary ms-auto">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler text-body" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-body"></span>
+              <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-3">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link text-dark active text-body" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>

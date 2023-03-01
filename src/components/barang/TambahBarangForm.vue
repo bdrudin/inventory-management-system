@@ -61,6 +61,7 @@ export default {
         alamat: '',
         noTelp: '',
       },
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     };
   },
   methods: {
@@ -77,7 +78,7 @@ export default {
         }
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.post('http://159.223.57.121:8090/barang/create', formData, {
+        const response = await axios.post(`${this.baseUrl}/barang/create`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'

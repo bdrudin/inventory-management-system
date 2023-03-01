@@ -6,7 +6,7 @@
         <input type="text" class="form-control" v-model="username">
       </div>
       <div class="input-group input-group-outline my-3">
-        <label class="form-label">Profile Name:</label>
+        <label class="form-label">Profile Name</label>
         <input type="text" class="form-control" v-model="profileName">
       </div>
       <div class="input-group input-group-outline my-3 mb-1">

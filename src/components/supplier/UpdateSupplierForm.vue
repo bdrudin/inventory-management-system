@@ -38,6 +38,7 @@ export default {
         alamat: '',
         noTelp: '',
       },
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     };
   },
   async created() {
@@ -50,7 +51,7 @@ export default {
   methods: {
     async getSupplier() {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://159.223.57.121:8090/supplier/find-by-id/${this.$route.params.id}`, {
+      const response = await axios.get(`${this.baseUrl}/supplier/find-by-id/${this.$route.params.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,7 +63,7 @@ export default {
     async updateSupplier() {
       const token = localStorage.getItem('token');
       try {
-        const response = await axios.put(`http://159.223.57.121:8090/supplier/update/${this.$route.params.id}`, this.supplier, {
+        const response = await axios.put(`${this.baseUrl}/supplier/update/${this.$route.params.id}`, this.supplier, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'

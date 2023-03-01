@@ -20,9 +20,6 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView,
-      meta: {
-        requiresNonAuth: true
-      }
     },
     {
       path: '/dashboard',

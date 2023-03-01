@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <div class="card shadow-lg border-0 rounded-lg">
           <div class="card-header">
-            <h3 class="text-center font-weight-light my-4">Welcome {{user}}</h3>
+            <h3 class="text-center font-weight-light my-4">Welcome {{profile.profileName}}</h3>
           </div>
           <div class="card-body">
             <p class="text-center font-weight-light">You have successfully logged in to the dashboard.</p>
@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       profile: {},
+      baseUrl: import.meta.env.VITE_APP_BASE_URI
     }
   },
   created() {
@@ -41,7 +42,7 @@ export default {
   methods: {
     async getProfileByUsername() {
       try {
-        const response = await axios.get(`http://159.223.57.121:8090/users/find-by-username?username=${this.user}`, {
+        const response = await axios.get(`${this.baseUrl}/users/find-by-username?username=${this.user}`, {
           headers: {
             Authorization: `Bearer ${this.token}`,
           },
@@ -50,10 +51,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    },
-
-    resetToken() {
-      localStorage.removeItem('token');
     },
   },
 }
